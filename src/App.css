@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'Bungee';
+  src: local('Bungee'), url(./assets/fonts/Bungee-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'BungeeHairline';
+  src: local('BungeeHairline'), url(./assets/fonts/BungeeHairline-Regular.ttf) format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Caesar-Dressing';
+  src: local('Caesar-Dressing'), url(./assets/fonts/CaesarDressing-Regular.ttf) format('truetype');
+}

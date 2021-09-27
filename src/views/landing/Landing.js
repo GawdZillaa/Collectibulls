@@ -48,7 +48,7 @@ const Landing = () => {
             >
                 <AppBar
                     style={{
-                        backgroundColor:'black',
+                        backgroundColor:'crimson',
                         minHeight:'100px',
                         justifyContent:'center',
                         display:'flex'
@@ -57,10 +57,12 @@ const Landing = () => {
                     <Toolbar>
                         <p
                             style={{
-                                // fontFamily:'brandon-grotesque'
+                                fontFamily:'Bungee',
+                                fontSize:40,
+                                fontWeight:'bolder'
                             }}
                         >
-                            Bull
+                            Collectibull
                         </p>
                         
                     </Toolbar>
@@ -87,7 +89,7 @@ const Landing = () => {
                     style={{
                         height:'calc(100vh)',
                         width:'100%',
-                        // backgroundColor:'red'
+                        backgroundColor:'black'
                     }}
                 >
 
@@ -97,9 +99,26 @@ const Landing = () => {
                 <div
                     style={{
                         width:'100%',
-                        // overflowX:'hidden'
+                        overflowX:'hidden'
                     }}
                 >
+                    <div
+                        style={{
+                            fontSize:40,
+                            padding:30
+                        }}
+                    >
+                        <h1
+                            style={{
+                                fontFamily:'Bungee',
+                                fontSize:45
+                            }}
+                        >
+                            Roadmap
+                        </h1>
+                        
+                    </div>
+                    
                     <TimeLine2/>
                 </div>
                 
@@ -112,8 +131,10 @@ const Landing = () => {
                     size="small" 
                     aria-label="scroll back to top"
                     style={{
-                        backgroundColor:'black'
+                        backgroundColor:'crimson',
+                        zIndex:100
                     }}
+                    
                 >
                     <KeyboardArrowUpIcon />
                 </Fab>
@@ -152,6 +173,9 @@ const ScrollTop = ({children,dropNav }) => {
     return (
         <Zoom 
             in={dropNav}
+            style={{
+                zIndex:100
+            }}
         >
             <Box
             onClick={handleClick}
@@ -271,7 +295,7 @@ const TimeLine2 = () => {
     return (
         <div
             style={{
-                height:500,
+                height:300,
                 position:'relative',
                 width:'100%',
                 // padding:50
@@ -318,29 +342,40 @@ const TimeLine2 = () => {
                                     }}
                                     className='card2 move-up'
                                 >
-                                    <div
+                                    {/* <div
                                         style={{
                                             flex:6
                                         }}
                                     >
 
-                                    </div>
+                                    </div> */}
                                     <div
                                         style={{
-                                            flex:4,
                                             justifyContent:'center',
                                             alignItems:'center',
                                             display:'flex',
-                                            flexDirection:'column'
+                                            flexDirection:'column',
+                                            height:50
                                         }}
                                     >
-                                        <h3>
+
+                                        <h3
+                                            style={{
+                                                fontFamily:'Bungee',
+                                                fontSize:30
+                                            }}
+                                        >
                                             {eventObj.title}
                                         </h3>
-                                        <p>
-                                            {eventObj.info}
-                                        </p>
+
                                     </div>
+                                    <p
+                                        style={{
+                                            fontWeight:'initial'
+                                        }}
+                                    >
+                                        {eventObj.info}
+                                    </p>
 
                                 </div>
                             </div>
@@ -358,19 +393,6 @@ const TimeLine2 = () => {
                     zIndex:0
                 }}
             ></hr>
-            {/* {
-                data.map(eventObj => {
-                    return (
-                        <div
-                            style={{
-
-                            }}
-                        >
-                        </div>
-                    )
-                })
-            } */}
-
         </div>
     )
 }
