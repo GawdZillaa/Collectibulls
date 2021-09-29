@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { AppBar } from '@mui/material';
+import { AppBar, Alert } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,23 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Fab from '@mui/material/Fab';
 import { Chrono } from "react-chrono";
 import Slider from "react-slick";
+import { Snackbar } from '@mui/material';
+
+import LandingVideo from '../../assets/videos/3dLanding.mp4'
+import SkateBanner from '../../assets/banners/skatebanner.jpeg'
+
+import Gift from '../../assets/icons/gift.png'
+import Arcade from '../../assets/icons/arcade.png'
+import Love from '../../assets/icons/love.png'
+import Rocket from '../../assets/icons/rocket.png'
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Landing.css"
+import { Gif } from '@mui/icons-material';
 const Landing = () => {
     const [dropNav, setDropNav]= useState(false);
+    const [error, setError]= useState(null);
     const scrollRef = useRef(null)
 
     const onScroll = (e) => {
@@ -48,8 +60,8 @@ const Landing = () => {
             >
                 <AppBar
                     style={{
-                        backgroundColor:'crimson',
-                        minHeight:'100px',
+                        backgroundColor:'black',
+                        minHeight:'128px',
                         justifyContent:'center',
                         display:'flex'
                     }}
@@ -89,17 +101,77 @@ const Landing = () => {
                     style={{
                         height:'calc(100vh)',
                         width:'100%',
-                        backgroundColor:'black'
+                        backgroundColor:'red',
+                        display:'flex',
+                        flexDirection:'column',
+                        position:'relative'
+                        // justifyContent:'center',
+                        // alignItems:'center'
                     }}
                 >
+                    <div
+                        style={{
+                            height:'128px',
+                            backgroundColor:'white'
+                        }}
+                        id="spacer1"
+                    >
+
+                    </div>
+                    <div
+                        style={{
+                            position:'absolute',
+                            top:0,
+                            left:0,
+                            height:'100%',
+                            width:'100%',
+                            backgroundColor:'#0000004D',
+                            justifyContent:'center',
+                            alignItems:'center',
+                            display:'flex'
+                        }}
+                    >
+                        <button 
+                            style={{
+                                cursor:'pointer', 
+                                zIndex:100,
+                                height:75 ,
+                                width:250,
+                                fontSize:30,
+                                fontFamily:'Bungee'
+                            }} 
+                            className="fancyButton1"
+                            onClick={() => setError('Minting Comming Soon')}
+                        >
+                            Mint
+                        </button>
+                    </div>
+
+                    <video 
+                        autoplay="autoplay" 
+                        muted 
+                        loop="loop" 
+                        id="myVideo"
+                        style={{
+                            height:'calc(100vh - 128px)'
+
+                        }}
+                          className="landingVideo"
+                    >
+                    <source src={LandingVideo} type="video/mp4"/>
+                        Your browser does not support HTML5 video.
+                    </video>
 
 
                 </div>
                 {/* <TimeLine/> */}
                 <div
                     style={{
+                        height:1000,
                         width:'100%',
-                        overflowX:'hidden'
+                        overflowX:'hidden',
+                        backgroundColor:'black',
+                        // overflowY:'hidden'
                     }}
                 >
                     <div
@@ -111,7 +183,8 @@ const Landing = () => {
                         <h1
                             style={{
                                 fontFamily:'Bungee',
-                                fontSize:45
+                                fontSize:50,
+                                color:'white'
                             }}
                         >
                             Roadmap
@@ -121,6 +194,46 @@ const Landing = () => {
                     
                     <TimeLine2/>
                 </div>
+
+
+
+            <div
+                style={{
+                    height:250,
+                    width:'100%',
+                    backgroundColor:'black',
+                    // backgroundImage: `url(${SkateBanner})`,
+                    // backgroundPosition: 'center',
+                    // backgroundSize: '100%',
+                    // backgroundColor:'orange'
+                    display:'flex',
+                    justifyContent:'center',
+                    alignItems:'center'
+                    
+                }}
+                // className="bannerMod"
+            >
+
+                <img 
+                    src={SkateBanner} 
+                    style={{
+                        height:140,
+                        width:'70%'
+                    }}
+                    // className="bannerMod"
+                />
+
+            </div>
+
+            <div
+                style={{
+                    height:200,
+                    width:'100%',
+                    backgroundColor:'black'
+                }}
+            >
+
+            </div>
                 
 
             <ScrollTop 
@@ -131,14 +244,29 @@ const Landing = () => {
                     size="small" 
                     aria-label="scroll back to top"
                     style={{
-                        backgroundColor:'crimson',
+                        backgroundColor:'white',
                         zIndex:100
                     }}
                     
                 >
-                    <KeyboardArrowUpIcon />
+                    <KeyboardArrowUpIcon style={{color:'black'}}/>
                 </Fab>
             </ScrollTop>
+            <Snackbar
+                open={error}
+                autoHideDuration={10000}
+                onClose={() => setError(null)}
+                message={error}
+                action={() => setError(null)}
+                style={{
+                    width:'25%',
+                    alignSelf:'center'
+                }}
+            >
+                <Alert onClose={() => setError(null)} severity="error" sx={{ width: '100%' }}>
+                    {error}
+                </Alert>
+            </Snackbar>
         </div>
     )
 }
@@ -249,29 +377,34 @@ const TimeLine2 = () => {
 
     const data = [
         {
-            title:'Token Launch',
-            info: '10% of every buy and 18% of every sell transaction gets automatically redistributed in USD Tether.'
+            title:'Charity',
+            info: '10% of every buy and 18% of every sell transaction gets automatically redistributed in USD Tether.',
+            icon: Love,
+            quarter: 'Q4-Q1',
+            percent: '10%'
         },
         {
-            title:'Contract Audit',
-            info: 'Certik Audit'
+            title:'3d Suprise',
+            info: 'Certik Audit',
+            icon: Gift,
+            quarter: 'Q1-Q2',
+            percent: '60%'
         },
         {
-            title:'Nft MarketPlace',
-            info: '...'
+            title:'Arcade Game',
+            info: '...',
+            icon: Arcade,
+            quarter: 'Q2-Q3',
+            percent: '90%'
         },
         {
-            title:'Nft MarketPlace',
-            info: '...'
-        },
-        {
-            title:'Nft MarketPlace',
-            info: '...'
-        },
-        {
-            title:'Nft MarketPlace',
-            info: '...'
+            title:'Future',
+            info: 'Coming soon...',
+            icon: Rocket,
+            quarter: '?',
+            percent: '9000%'
         }
+
   
     ]
 
@@ -286,7 +419,7 @@ const TimeLine2 = () => {
     var settings = {
         dots: true,
         infinite: false,
-        speed: 500,
+        speed: 600,
         slidesToShow: 3,
         slidesToScroll: 3,
         initialSlide: 0,
@@ -295,24 +428,32 @@ const TimeLine2 = () => {
     return (
         <div
             style={{
-                height:300,
+                // height:'300px',
                 position:'relative',
                 width:'100%',
                 // padding:50
+                // backgroundColor:'pink'
             }}
         >
 
-            <div
+            {/* <div
                 style={{
                     position:'relative',
-                    zIndex:10
+                    zIndex:10,
+                    justifyContent:'center',
+                    alignItems:'center'
                 }}
-            >
+            > */}
 
             <Slider 
                 {...settings}
                 style={{
-                    zIndex:10
+                    zIndex:10,
+                    // height:"600px",
+                    justifyContent:'center',
+                    display:'flex',
+                    alignItems:'center',
+                    // backgroundColor:'pink'
                 }}
             >
                 {
@@ -320,23 +461,29 @@ const TimeLine2 = () => {
                         return(
                             <div
                                 style={{
-                                    padding:10,
-                                    zIndex:1,
+                                    // padding:10,
+                                    // zIndex:1,
+                                    paddingTop:50,
+                                    paddingBottom:50,
+                                    backgroundColor:'yellow',
+                                    // height:1000
                                 }}
+                                id="outer"
                             >
                                 
                                 <div
                                     style={{
-                                        height:150,
+                                        height:400,
                                         width:ww*.25,
                                         borderRadius:10,
-                                        marginTop:10,
-                                        marginBottom:10,
+                                        marginTop:50,
+                                        marginBottom:50,
                                         marginLeft:50,
                                         // marginRight:20,
                                         display:'flex',
                                         flexDirection:'column',
-                                        padding:20,
+                                        padding:30,
+                                        // backgroundColor:'crimson'
                                         // zIndex:10,
 
                                     }}
@@ -355,9 +502,17 @@ const TimeLine2 = () => {
                                             alignItems:'center',
                                             display:'flex',
                                             flexDirection:'column',
-                                            height:50
+                                            // height:50
                                         }}
                                     >
+                                        <img 
+                                            src={eventObj.icon} 
+                                            style={{
+                                                height:100,
+                                                width:100
+                                            }}
+                                            // className="bannerMod"
+                                        />
 
                                         <h3
                                             style={{
@@ -377,22 +532,55 @@ const TimeLine2 = () => {
                                         {eventObj.info}
                                     </p>
 
+                                    <button 
+                                        style={{
+                                            cursor:'pointer', 
+                                            zIndex:100,
+                                            height:50,
+                                            width:200,
+                                            fontSize:30,
+                                            fontFamily:'Bungee',
+                                            alignSelf:'center'
+                                        }} 
+                                        className="fancyButton2"
+                                        // onClick={() => setError('Minting Comming Soon')}
+                                    >
+                                        {eventObj.quarter}
+                                    </button>
+                                    <button 
+                                        style={{
+                                            cursor:'pointer', 
+                                            zIndex:100,
+                                            height:50,
+                                            width:200,
+                                            fontSize:30,
+                                            fontFamily:'Bungee',
+                                            alignSelf:'center',
+                                            marginTop:10
+                                        }} 
+                                        className="fancyButton1"
+                                        // onClick={() => setError('Minting Comming Soon')}
+                                    >
+                                        {eventObj.percent}
+                                    </button>
+
                                 </div>
                             </div>
                         )
                     })
                 }
             </Slider>
-            </div>
+            {/* </div> */}
             <hr 
                 class="dashed-2"
                 style={{
                     // top:500,
                     position:'absolute',
-                    top:100,
-                    zIndex:0
+                    top:250,
+                    zIndex:8
                 }}
             ></hr>
+
         </div>
     )
 }

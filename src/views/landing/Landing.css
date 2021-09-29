@@ -11,21 +11,88 @@
 }
 
 .move-up{
-    background-color: white;
+    background-color: crimson;
 
     transition: all 1s;
     transform : translateY(0px);
 }
 .move-up:hover{
-    background-color: crimson;
+    background-color: white;
     transition: all 1s;
-    transform : translateY(-10px);
+    transform : translateY(-15px);
 }
 
 .dashed-2 {
     border: none;
     height: 1px;
     width: 100%;
-    background: #000;
-    background: repeating-linear-gradient(90deg,#000,#000 6px,transparent 6px,transparent 12px);
+    background: rgb(255, 255, 255);
+    background: repeating-linear-gradient(90deg,white,white 6px,transparent 6px,transparent 12px);
   }
+
+.landingVideo {
+    object-fit: fill;
+}
+
+.bannerMod{
+    object-fit: contain;
+    /* width: auto; */
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    /* max-width: 100%;
+    max-height: 200; */
+    width: 200;
+    height: 100;
+
+}
+
+
+.fancyButton1 {
+
+    border: none;
+    background-color: white;
+    box-shadow: 0 1px 9px rgba(0,0,0,0.1),
+                0 0 0 100px #1cb inset;
+    transform: skewX(-18deg);
+    transition: none;
+}
+  
+.fancyButton1:hover {
+    box-shadow: 0 3px 20px rgba(0,0,0,0.3),
+                0 0 0 2px white inset;
+    background-color: #1cb;
+    transition: all 0.2s;
+}
+  
+.fancyButton1:active {
+    color: #1cb;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.3),
+                0 0 0px 200px white inset;
+    transition: none;
+}
+
+.fancyButton2 {
+
+    border: none;
+    background-color: white;
+    box-shadow: 0 1px 9px rgba(0,0,0,0.1),
+                0 0 0 100px orange inset;
+    transform: skewX(-18deg);
+    transition: none;
+}
+  
+.fancyButton2:hover {
+    box-shadow: 0 3px 20px rgba(0,0,0,0.3),
+                0 0 0 2px white inset;
+    background-color: orange;
+    transition: all 0.2s;
+}
+  
+.fancyButton2:active {
+    color: orange;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.3),
+                0 0 0px 200px white inset;
+    transition: none;
+}
+
+/* .sliderTweak >  */
