@@ -63,7 +63,8 @@ const Landing = () => {
                         backgroundColor:'black',
                         minHeight:'128px',
                         justifyContent:'center',
-                        display:'flex'
+                        display:'flex',
+                        height:100
                     }}
                 >
                     <Toolbar>
@@ -276,7 +277,12 @@ const HideOnScroll = ({children, dropNav}) => {
     // const { children, window } = props;
 
     return (
-        <Slide appear={!dropNav} direction="down" in={!dropNav}>
+        <Slide 
+            appear={!dropNav} 
+            direction="down" 
+            in={!dropNav}
+
+        >
             {children}
         </Slide>
     );

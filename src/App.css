@@ -52,3 +52,26 @@
   font-family: 'Caesar-Dressing';
   src: local('Caesar-Dressing'), url(./assets/fonts/CaesarDressing-Regular.ttf) format('truetype');
 }
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4f4f4f #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #4f4f4f;
+    border-radius: 10px;
+    border: 0px solid #ffffff;
+  }
