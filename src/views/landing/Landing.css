@@ -20,10 +20,11 @@
 
 .dashed-2 {
     border: none;
-    height: 1px;
+    height: 5px;
     width: 100%;
     background: rgb(255, 255, 255);
     background: repeating-linear-gradient(90deg,black,black 6px,transparent 6px,transparent 12px);
+    top:300px
   }
 
 .landingVideo {
@@ -43,7 +44,7 @@
 }
 
 .navTitle {
-    font-size: 40px;
+    font-size: 45px;
 }
 
 
@@ -222,8 +223,15 @@
     height: 810px;
 }
 
+.appBar {
+    height: 17vh;
+}
+
 
 @media only screen and (max-width: 900px) {
+    .dashed-2 {
+        top:225px
+    }
     .fancyButton1 {
         height:50px;
         width:150px;
@@ -284,12 +292,15 @@
     .timelineOuter {
         height: 700px;
     }
+    .navTitle {
+        font-size: 40px;
+    }
   }
 
 
   @media only screen and (max-width: 500px) {
       .navTitle {
-          font-size: 20px;
+          font-size: 25px;
       }
     .fancyButton1 {
         height:50px;

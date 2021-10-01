@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { AppBar, Alert } from '@mui/material';
+import { useHistory } from "react-router-dom";
+
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -20,6 +22,8 @@ import TestBanner from '../../assets/banners/testbanner.png'
 import TestBanner1400 from '../../assets/banners/testbanner1400.png'
 import Svg0 from '../../assets/banners/svg5.svg'
 
+import ColLogo from '../../assets/logo/collogo1.png'
+
 import Gift from '../../assets/icons/gift.png'
 import Arcade from '../../assets/icons/arcade.png'
 import Love from '../../assets/icons/love.png'
@@ -30,27 +34,15 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Landing.css"
 import { Gif } from '@mui/icons-material';
 const Landing = () => {
-    const refVideo = useRef(null);
+    const history = useHistory();
 
     const [dropNav, setDropNav]= useState(false);
     const [error, setError]= useState(null);
     const scrollRef = useRef(null)
 
-    useEffect(() => {
-        if (!refVideo.current) {
-            return;
-        }
-
-        //open bug since 2017 that you cannot set muted in video element https://github.com/facebook/react/issues/10389
-        // refVideo.current.defaultMuted = false;
-        refVideo.current.muted = false;
-        
-
-    }, []);
-
     const onScroll = (e) => {
         console.log(e)
-        const scrollY = window.scrollY //Don't get confused by what's scrolling - It's not the window
+        const scrollY = window.scrollY 
         const scrollTop = scrollRef.current.scrollTop
         console.log(` ${scrollTop > 20}  ${scrollTop}`)
 
@@ -77,12 +69,13 @@ const Landing = () => {
             >
                 <AppBar
                     style={{
-                        backgroundColor:'white',
-                        minHeight:'128px',
+                        backgroundColor:'black',
+                        // minHeight:'128px',
                         justifyContent:'center',
                         display:'flex',
-                        height:100
+                        // height:100
                     }}
+                    className="appBar"
                 >
                     <Toolbar>
                         <p
@@ -90,7 +83,7 @@ const Landing = () => {
                                 fontFamily:'Bungee',
                                 // fontSize:40,
                                 fontWeight:'bolder',
-                                color:'black'
+                                color:'white'
                             }}
                             className="navTitle"
                         >
@@ -101,113 +94,38 @@ const Landing = () => {
                 </AppBar>
             </HideOnScroll>
             <div  style={{height:1}}id="back-to-top-anchor" />
-
-                {/* <div
-                    style={{
-                        backgroundColor:'white'
-                    }}
-                >
-                    <Toolbar variant='regular'>
-                        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" color="inherit" component="div">
-                            Yee Boi
-                        </Typography>
-                    </Toolbar>
-                </div> */}
              
                 <div
                     style={{
-                        // height:'calc(100vh)',
                         width:'100%',
-                        backgroundColor:'grey',
+                        backgroundColor:'#1a1a1a',
                         display:'flex',
                         flexDirection:'column',
                         position:'relative'
-                        // justifyContent:'center',
-                        // alignItems:'center'
                     }}
                 >
                     <div
                         style={{
-                            height:'128px',
-                            backgroundColor:'white'
+                            // height:'128px',
+                            backgroundColor:'#1a1a1a'
                         }}
+                        className="appBar"
                         id="spacer1"
                     >
 
                     </div>
-                    {/* <div
-                        style={{
-                            // height:300,
-                            width:'100%',
-                            backgroundColor:'purple',
-                            // backgroundImage: `url(${SkateBanner})`,
-                            // backgroundPosition: 'center',
-                            // backgroundSize: '100%',
-                            // backgroundColor:'orange'
-                            display:'flex',
-                            justifyContent:'center',
-                            alignItems:'center',
-                            // paddingTop: 50,
-                            
-                        }}
-                        // className="bannerMod"
-                    > */}
-
-                    {/* <div
-                        style={{
-                            backgroundColor:'blue',
-                            // height:'266px',
-                            // width: '1090px',
-                            // height:`calc(100vw / 5.5)`,
-                            // height:150,
-                            width: '100%',
-                            minHeight: 140,
-                            maxHeight: 170
-                            // marginTop:100,
-                            // aspectRatio: 10 / 1
-                        }}
-                    > */}
-                            {/* <img 
-                                src={Svg0} 
-                                style={{
-                                    maxHeight:160,
-                                    // width:'100vw',
-                                    // width:'100%',
-                                    // height:'100%'
-                                    // alignSelf:'center'
-                                    // objectFit:'contain'
-                                }}
-                                // className="bannerMod"
-                            /> */}
-                        {/* </div> */}
-
-
-                    {/* </div> */}
                     <div
                         style={{
                             position:'absolute',
                             top:0,
                             left:0,
-                            // height:'100%',
                             height: `calc(100vh)`,
                             width:'100%',
                             backgroundColor:'#0000004D',
-                            // justifyContent:'center',
-                            // alignItems:'center',
                             display:'flex',
                             flexDirection:'column'
                         }}
                     >
-                        {/* <div
-                            style={{
-                                height:'160px'
-                            }}
-                        >
-
-                        </div> */}
                         <div
                             style={{
                                 height:'100%',
@@ -222,13 +140,10 @@ const Landing = () => {
                                 style={{
                                     cursor:'pointer', 
                                     zIndex:100,
-                                    // height:75 ,
-                                    // width:250,
-                                    // fontSize:30,
                                     fontFamily:'Bungee'
                                 }} 
                                 className="fancyButton1"
-                                onClick={() => setError('Minting Comming Soon')}
+                                onClick={() => setError('Mint comming soon :D')}
                             >
                                 Mint
                             </button>
@@ -236,15 +151,12 @@ const Landing = () => {
                                 style={{
                                     cursor:'pointer', 
                                     zIndex:100,
-                                    // height:75 ,
-                                    // width:250,
-                                    // fontSize:30,
                                     fontFamily:'Bungee',
                                     marginLeft:10,
                                     color:'black'
                                 }} 
                                 className="fancyButton4"
-                                onClick={() => setError('Minting Comming Soon')}
+                                onClick={() => history.push('/about')}
                             >
                                 About
                             </button>
@@ -253,17 +165,12 @@ const Landing = () => {
                     </div>
 
                     <video 
-                        // autoPlay="autoplay" 
                         autoPlay
-                        // ref={refVideo}
                         muted
-                        // loop="loop" 
                         loop
                         id="myVideo"
-                        // oncanplay="this.muted=false"
                         style={{
-                            // height:'calc(100vh - 128px - (100vw / 17))'
-                            height:'calc(100vh - 128px)'
+                            height:'calc(100vh - 15vh)'
 
                         }}
                           className="landingVideo"
@@ -277,12 +184,10 @@ const Landing = () => {
                 {/* <TimeLine/> */}
                 <div
                     style={{
-                        // height:900,
                         width:'100%',
                         overflowX:'hidden',
                         backgroundColor:'white',
                         margin:0
-                        // overflowY:'hidden'
                     }}
                     className="timelineOuter"
                 >
@@ -293,12 +198,6 @@ const Landing = () => {
                         }}
                     >
                         <h1
-                            style={{
-                                // fontFamily:'Bungee',
-                                // fontSize:50,
-                                // color:'black',
-                                // margin:0
-                            }}
                             className="roadMapTitle"
                         >
                             Roadmap
@@ -309,50 +208,25 @@ const Landing = () => {
                     <TimeLine2/>
                 </div>
 
-            {/* <div
-                style={{
-                    fontSize:40,
-                    padding:30,
-                    backgroundColor:'black'
-                }}
-            >
-                <h1
-                    style={{
-                        fontFamily:'Bungee',
-                        fontSize:50,
-                        color:'white'
-                    }}
-                >
-                    Sponsors
-                </h1>
-                
-            </div> */}
-
             <div
                 style={{
                     height:300,
                     width:'100%',
                     backgroundColor:'black',
-                    // backgroundImage: `url(${SkateBanner})`,
-                    // backgroundPosition: 'center',
-                    // backgroundSize: '100%',
-                    // backgroundColor:'orange'
                     display:'flex',
                     justifyContent:'center',
                     alignItems:'center',
                     paddingTop: 50
                     
                 }}
-                // className="bannerMod"
             >
 
                 <img 
                     src={SkateBanner} 
                     style={{
-                        // height:140,
-                        width:'70%'
+                        height:140,
+                        width:'60%'
                     }}
-                    // className="bannerMod"
                 />
 
             </div>
@@ -426,10 +300,20 @@ const Landing = () => {
                 style={{
                     height:200,
                     width:'100%',
-                    backgroundColor:'black'
+                    backgroundColor:'black',
+                    display:'flex',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    color:'silver'
                 }}
             >
-
+                <p
+                    style={{
+                        fontSize:15
+                    }}
+                >
+                    CollectiBulls 2021
+                </p>
             </div>
                 
 
@@ -469,8 +353,6 @@ const Landing = () => {
 }
 
 const HideOnScroll = ({children, dropNav}) => {
-
-    // const { children, window } = props;
 
     return (
         <Slide 
@@ -585,32 +467,17 @@ const TimeLine2 = () => {
     return (
         <div
             style={{
-                // height:'300px',
                 position:'relative',
                 width:'100%',
-                // padding:50
-                // backgroundColor:'pink'
             }}
         >
-
-            {/* <div
-                style={{
-                    position:'relative',
-                    zIndex:10,
-                    justifyContent:'center',
-                    alignItems:'center'
-                }}
-            > */}
-
             <Slider 
                 {...settings}
                 style={{
                     zIndex:10,
-                    // height:"600px",
                     justifyContent:'center',
                     display:'flex',
                     alignItems:'center',
-                    // backgroundColor:'pink'
                 }}
             >
                 {
@@ -618,21 +485,13 @@ const TimeLine2 = () => {
                         return(
                             <div
                                 style={{
-                                    // padding:10,
-                                    // zIndex:1,
                                     paddingTop:50,
                                     paddingBottom:50,
-                                    // backgroundColor:'yellow',
                                     display:'flex'
-                                    // height:1000
                                 }}
                                 id="outer"
                             >
-                                
                                 <div
-                                    style={{
-                                        // backgroundColor:'yellow'
-                                    }}
                                     className='card2 move-up timeCardInner'
                                 >
   
@@ -642,7 +501,6 @@ const TimeLine2 = () => {
                                             alignItems:'center',
                                             display:'flex',
                                             flexDirection:'column',
-                                            // flex:4
                                             height:'45%'
                                         }}
                                     >
@@ -652,10 +510,6 @@ const TimeLine2 = () => {
                                         />
      
                                         <h3
-                                            style={{
-                                                // fontFamily:'Bungee',
-                                                // fontSize:30
-                                            }}
                                             className="timeCardTitle"
                                         >
                                             {eventObj.title}
@@ -665,15 +519,9 @@ const TimeLine2 = () => {
                                     <div
                                         style={{
                                             height:100,
-                                            // flex: 3,
-                                            // backgroundColor:'grey'
                                         }}
                                     >
                                         <p
-                                            // style={{
-                                            //     fontWeight:'initial'
-                                            // }}
-
                                             className="timeCardSummary"
                                         >
                                             {eventObj.info}
@@ -684,19 +532,11 @@ const TimeLine2 = () => {
                                         style={{
                                             display:'flex',
                                             flexDirection:'column',
-                                            // alignSelf:'flex-end',
-                                            // backgroundColor:'orange',
-                                            // flex:3
-                                            
                                         }}
                                     >
-                                        <button 
+                                        <div 
                                             style={{
-                                                cursor:'pointer', 
                                                 zIndex:100,
-                                                // height:50,
-                                                // width:200,
-                                                // fontSize:30,
                                                 fontFamily:'Bungee',
                                                 alignSelf:'center',
                                                 alignItems:'center',
@@ -704,17 +544,12 @@ const TimeLine2 = () => {
                                                 display:'flex'
                                             }} 
                                             className="cardFlash"
-                                            // onClick={() => setError('Minting Comming Soon')}
                                         >
                                             {eventObj.quarter}
-                                        </button>
-                                        <button 
+                                        </div>
+                                        <div 
                                             style={{
-                                                cursor:'pointer', 
                                                 zIndex:100,
-                                                // height:50,
-                                                // width:200,
-                                                // fontSize:30,
                                                 fontFamily:'Bungee',
                                                 alignSelf:'center',
                                                 marginTop:10,
@@ -723,29 +558,23 @@ const TimeLine2 = () => {
                                                 display:'flex'
                                             }} 
                                             className="cardFlash1"
-                                            // onClick={() => setError('Minting Comming Soon')}
                                         >
                                             {eventObj.percent}
-                                        </button>
+                                        </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         )
                     })
                 }
             </Slider>
-            {/* </div> */}
             <hr 
                 class="dashed-2"
                 style={{
-                    // top:500,
                     position:'absolute',
-                    top:250,
                     zIndex:8
                 }}
+                className="dashed-2"
             ></hr>
 
         </div>

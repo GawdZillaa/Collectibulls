@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Landing from './views/landing/Landing';
 import Claims from './views/claims/Claims'
+import About from './views/about/About'
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +18,9 @@ function App() {
       <Switch>
       <Route path="/claim">
           <Claims />
+        </Route>
+        <Route path="/about">
+          <About />
         </Route>
         <Route path="/">
           <Landing />

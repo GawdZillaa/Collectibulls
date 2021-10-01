@@ -1,0 +1,54 @@
+.backgroundContainer {
+    background-size: contain;
+    font-family: 'Bungee';
+}
+
+.summaryTitle {
+    font-size: 60px;
+    text-decoration: underline;
+    text-decoration-color: crimson;
+    text-underline-offset: 20px;
+}
+.summaryText {
+    font-size: 25px;
+}
+.summaryTextContainer {
+    padding: 100px;
+}
+
+.innerContainer {
+    width: 90%;
+}
+.titleContainer {
+    padding: 100px;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .summaryTitle {
+        font-size: 40px;
+        text-align: center;
+        align-self: center;
+    }
+
+    .innerContainer {
+        width: 100%;
+    }
+    .titleContainer {
+        padding: 25px;
+    }
+    .summaryText {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .summaryTitle {
+        font-size: 40px;
+        text-align: left;
+    }
+
+    .summaryTextContainer {
+        padding: 25px;
+    }
+}
