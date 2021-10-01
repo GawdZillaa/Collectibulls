@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Landing from './views/landing/Landing';
-import Claims from './views/Claims/Claims'
+import Claims from './views/claims/Claims'
 import {
   BrowserRouter as Router,
   Switch,

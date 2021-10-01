@@ -15,7 +15,11 @@ import Slider from "react-slick";
 import { Snackbar } from '@mui/material';
 
 import LandingVideo from '../../assets/videos/3dLanding.mp4'
+import PartnerVideo from '../../assets/videos/partnerv4.mp4'
 import SkateBanner from '../../assets/banners/skatebanner.jpeg'
+import TestBanner from '../../assets/banners/testbanner.png'
+import TestBanner1400 from '../../assets/banners/testbanner1400.png'
+import Svg0 from '../../assets/banners/svg5.svg'
 
 import Gift from '../../assets/icons/gift.png'
 import Arcade from '../../assets/icons/arcade.png'
@@ -27,9 +31,23 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Landing.css"
 import { Gif } from '@mui/icons-material';
 const Landing = () => {
+    const refVideo = useRef(null);
+
     const [dropNav, setDropNav]= useState(false);
     const [error, setError]= useState(null);
     const scrollRef = useRef(null)
+
+    useEffect(() => {
+        if (!refVideo.current) {
+            return;
+        }
+
+        //open bug since 2017 that you cannot set muted in video element https://github.com/facebook/react/issues/10389
+        // refVideo.current.defaultMuted = false;
+        refVideo.current.muted = false;
+        
+
+    }, []);
 
     const onScroll = (e) => {
         console.log(e)
@@ -60,7 +78,7 @@ const Landing = () => {
             >
                 <AppBar
                     style={{
-                        backgroundColor:'black',
+                        backgroundColor:'white',
                         minHeight:'128px',
                         justifyContent:'center',
                         display:'flex',
@@ -71,11 +89,13 @@ const Landing = () => {
                         <p
                             style={{
                                 fontFamily:'Bungee',
-                                fontSize:40,
-                                fontWeight:'bolder'
+                                // fontSize:40,
+                                fontWeight:'bolder',
+                                color:'black'
                             }}
+                            className="navTitle"
                         >
-                            Collectibull
+                            Collectibulls
                         </p>
                         
                     </Toolbar>
@@ -100,9 +120,9 @@ const Landing = () => {
              
                 <div
                     style={{
-                        height:'calc(100vh)',
+                        // height:'calc(100vh)',
                         width:'100%',
-                        backgroundColor:'red',
+                        backgroundColor:'grey',
                         display:'flex',
                         flexDirection:'column',
                         position:'relative'
@@ -119,47 +139,137 @@ const Landing = () => {
                     >
 
                     </div>
+                    {/* <div
+                        style={{
+                            // height:300,
+                            width:'100%',
+                            backgroundColor:'purple',
+                            // backgroundImage: `url(${SkateBanner})`,
+                            // backgroundPosition: 'center',
+                            // backgroundSize: '100%',
+                            // backgroundColor:'orange'
+                            display:'flex',
+                            justifyContent:'center',
+                            alignItems:'center',
+                            // paddingTop: 50,
+                            
+                        }}
+                        // className="bannerMod"
+                    > */}
+
+                    {/* <div
+                        style={{
+                            backgroundColor:'blue',
+                            // height:'266px',
+                            // width: '1090px',
+                            // height:`calc(100vw / 5.5)`,
+                            // height:150,
+                            width: '100%',
+                            minHeight: 140,
+                            maxHeight: 170
+                            // marginTop:100,
+                            // aspectRatio: 10 / 1
+                        }}
+                    > */}
+                            {/* <img 
+                                src={Svg0} 
+                                style={{
+                                    maxHeight:160,
+                                    // width:'100vw',
+                                    // width:'100%',
+                                    // height:'100%'
+                                    // alignSelf:'center'
+                                    // objectFit:'contain'
+                                }}
+                                // className="bannerMod"
+                            /> */}
+                        {/* </div> */}
+
+
+                    {/* </div> */}
                     <div
                         style={{
                             position:'absolute',
                             top:0,
                             left:0,
-                            height:'100%',
+                            // height:'100%',
+                            height: `calc(100vh)`,
                             width:'100%',
                             backgroundColor:'#0000004D',
-                            justifyContent:'center',
-                            alignItems:'center',
-                            display:'flex'
+                            // justifyContent:'center',
+                            // alignItems:'center',
+                            display:'flex',
+                            flexDirection:'column'
                         }}
                     >
-                        <button 
+                        {/* <div
                             style={{
-                                cursor:'pointer', 
-                                zIndex:100,
-                                height:75 ,
-                                width:250,
-                                fontSize:30,
-                                fontFamily:'Bungee'
-                            }} 
-                            className="fancyButton1"
-                            onClick={() => setError('Minting Comming Soon')}
+                                height:'160px'
+                            }}
                         >
-                            Mint
-                        </button>
+
+                        </div> */}
+                        <div
+                            style={{
+                                height:'100%',
+                                width:'100%',
+                                display:'flex',
+                                flexDirection:'row',
+                                justifyContent:'center',
+                                alignItems:'center'
+                            }}
+                        >
+                            <button 
+                                style={{
+                                    cursor:'pointer', 
+                                    zIndex:100,
+                                    // height:75 ,
+                                    // width:250,
+                                    // fontSize:30,
+                                    fontFamily:'Bungee'
+                                }} 
+                                className="fancyButton1"
+                                onClick={() => setError('Minting Comming Soon')}
+                            >
+                                Mint
+                            </button>
+                            <button 
+                                style={{
+                                    cursor:'pointer', 
+                                    zIndex:100,
+                                    // height:75 ,
+                                    // width:250,
+                                    // fontSize:30,
+                                    fontFamily:'Bungee',
+                                    marginLeft:10,
+                                    color:'black'
+                                }} 
+                                className="fancyButton4"
+                                onClick={() => setError('Minting Comming Soon')}
+                            >
+                                About
+                            </button>
+                        </div>
+                        
                     </div>
 
                     <video 
-                        autoplay="autoplay" 
-                        muted 
-                        loop="loop" 
+                        // autoPlay="autoplay" 
+                        autoPlay
+                        // ref={refVideo}
+                        muted
+                        // loop="loop" 
+                        loop
                         id="myVideo"
+                        // oncanplay="this.muted=false"
                         style={{
+                            // height:'calc(100vh - 128px - (100vw / 17))'
                             height:'calc(100vh - 128px)'
 
                         }}
                           className="landingVideo"
                     >
-                    <source src={LandingVideo} type="video/mp4"/>
+                    <source src={PartnerVideo} type="video/mp4"/>
                         Your browser does not support HTML5 video.
                     </video>
 
@@ -168,25 +278,29 @@ const Landing = () => {
                 {/* <TimeLine/> */}
                 <div
                     style={{
-                        height:1000,
+                        // height:900,
                         width:'100%',
                         overflowX:'hidden',
-                        backgroundColor:'black',
+                        backgroundColor:'white',
+                        margin:0
                         // overflowY:'hidden'
                     }}
+                    className="timelineOuter"
                 >
                     <div
                         style={{
                             fontSize:40,
-                            padding:30
+                            padding: (0, 20, 0, 20)
                         }}
                     >
                         <h1
                             style={{
-                                fontFamily:'Bungee',
-                                fontSize:50,
-                                color:'white'
+                                // fontFamily:'Bungee',
+                                // fontSize:50,
+                                // color:'black',
+                                // margin:0
                             }}
+                            className="roadMapTitle"
                         >
                             Roadmap
                         </h1>
@@ -196,11 +310,28 @@ const Landing = () => {
                     <TimeLine2/>
                 </div>
 
-
+            {/* <div
+                style={{
+                    fontSize:40,
+                    padding:30,
+                    backgroundColor:'black'
+                }}
+            >
+                <h1
+                    style={{
+                        fontFamily:'Bungee',
+                        fontSize:50,
+                        color:'white'
+                    }}
+                >
+                    Sponsors
+                </h1>
+                
+            </div> */}
 
             <div
                 style={{
-                    height:250,
+                    height:300,
                     width:'100%',
                     backgroundColor:'black',
                     // backgroundImage: `url(${SkateBanner})`,
@@ -209,7 +340,8 @@ const Landing = () => {
                     // backgroundColor:'orange'
                     display:'flex',
                     justifyContent:'center',
-                    alignItems:'center'
+                    alignItems:'center',
+                    paddingTop: 50
                     
                 }}
                 // className="bannerMod"
@@ -218,13 +350,78 @@ const Landing = () => {
                 <img 
                     src={SkateBanner} 
                     style={{
-                        height:140,
+                        // height:140,
                         width:'70%'
                     }}
                     // className="bannerMod"
                 />
 
             </div>
+{/* 
+            <div
+                style={{
+                    height:300,
+                    width:'100%',
+                    backgroundColor:'black',
+                    // backgroundImage: `url(${SkateBanner})`,
+                    // backgroundPosition: 'center',
+                    // backgroundSize: '100%',
+                    // backgroundColor:'orange'
+                    display:'flex',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    paddingTop: 50,
+                    
+                }}
+                // className="bannerMod"
+            >
+
+                <div
+                    style={{
+                        backgroundColor:'red',
+                        // height:'266px',
+                        // width: '1090px',
+                        height:`calc(90vw / 10)`,
+                        width: '90%',
+                        marginTop:100,
+                        // aspectRatio: 10 / 1
+                    }}
+                />
+            </div> */}
+
+
+            {/* <div
+                style={{
+                    height:300,
+                    width:'100%',
+                    backgroundColor:'black',
+                    // backgroundImage: `url(${SkateBanner})`,
+                    // backgroundPosition: 'center',
+                    // backgroundSize: '100%',
+                    // backgroundColor:'orange'
+                    display:'flex',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    paddingTop: 50,
+                    
+                }}
+                // className="bannerMod"
+            >
+
+                <div
+                    style={{
+                        backgroundColor:'blue',
+                        // height:'266px',
+                        // width: '1090px',
+                        height:`calc(100vw / 12)`,
+                        width: '100%',
+                        marginTop:100,
+                        // aspectRatio: 10 / 1
+                    }}
+                />
+
+
+            </div> */}
 
             <div
                 style={{
@@ -390,7 +587,7 @@ const TimeLine2 = () => {
             percent: '10%'
         },
         {
-            title:'3d Suprise',
+            title:'Evolution',
             info: 'Certik Audit',
             icon: Gift,
             quarter: 'Q1-Q2',
@@ -398,7 +595,7 @@ const TimeLine2 = () => {
         },
         {
             title:'Arcade Game',
-            info: '...',
+            info: 'Something about arcade games',
             icon: Arcade,
             quarter: 'Q2-Q3',
             percent: '90%'
@@ -416,18 +613,29 @@ const TimeLine2 = () => {
 
     const [ww, setww]=useState(window.innerWidth)
 
+    const [slidesScroll, setSlidsScroll]=useState(3)
+    const [slidsesShow, setSlidesShow]=useState(3)
+    
 
     useEffect(() => {
         window.addEventListener('resize', () => {
             setww(window.innerWidth)
+            if(window.innerWidth <= 900){
+                setSlidesShow(2)
+                setSlidsScroll(1)
+                console.log('Shits Small')
+            }else{
+                setSlidesShow(3)
+                setSlidsScroll(3) 
+            }
         })
     },[])
-    var settings = {
+    let settings = {
         dots: true,
         infinite: false,
         speed: 600,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: slidsesShow,
+        slidesToScroll: slidesScroll,
         initialSlide: 0,
       };
 
@@ -471,7 +679,8 @@ const TimeLine2 = () => {
                                     // zIndex:1,
                                     paddingTop:50,
                                     paddingBottom:50,
-                                    backgroundColor:'yellow',
+                                    // backgroundColor:'yellow',
+                                    display:'flex'
                                     // height:1000
                                 }}
                                 id="outer"
@@ -479,96 +688,105 @@ const TimeLine2 = () => {
                                 
                                 <div
                                     style={{
-                                        height:400,
-                                        width:ww*.25,
-                                        borderRadius:10,
-                                        marginTop:50,
-                                        marginBottom:50,
-                                        marginLeft:50,
-                                        // marginRight:20,
-                                        display:'flex',
-                                        flexDirection:'column',
-                                        padding:30,
-                                        // backgroundColor:'crimson'
-                                        // zIndex:10,
-
+                                        // backgroundColor:'yellow'
                                     }}
-                                    className='card2 move-up'
+                                    className='card2 move-up timeCardInner'
                                 >
-                                    {/* <div
-                                        style={{
-                                            flex:6
-                                        }}
-                                    >
-
-                                    </div> */}
+  
                                     <div
                                         style={{
                                             justifyContent:'center',
                                             alignItems:'center',
                                             display:'flex',
                                             flexDirection:'column',
-                                            // height:50
+                                            // flex:4
+                                            height:'45%'
                                         }}
                                     >
                                         <img 
                                             src={eventObj.icon} 
-                                            style={{
-                                                height:100,
-                                                width:100
-                                            }}
-                                            // className="bannerMod"
+                                            className="timeCardImage"
                                         />
-
+     
                                         <h3
                                             style={{
-                                                fontFamily:'Bungee',
-                                                fontSize:30
+                                                // fontFamily:'Bungee',
+                                                // fontSize:30
                                             }}
+                                            className="timeCardTitle"
                                         >
                                             {eventObj.title}
                                         </h3>
 
                                     </div>
-                                    <p
+                                    <div
                                         style={{
-                                            fontWeight:'initial'
+                                            height:100,
+                                            // flex: 3,
+                                            // backgroundColor:'grey'
                                         }}
                                     >
-                                        {eventObj.info}
-                                    </p>
+                                        <p
+                                            // style={{
+                                            //     fontWeight:'initial'
+                                            // }}
 
-                                    <button 
+                                            className="timeCardSummary"
+                                        >
+                                            {eventObj.info}
+                                        </p>
+                                    </div>
+                                    
+                                    <div
                                         style={{
-                                            cursor:'pointer', 
-                                            zIndex:100,
-                                            height:50,
-                                            width:200,
-                                            fontSize:30,
-                                            fontFamily:'Bungee',
-                                            alignSelf:'center'
-                                        }} 
-                                        className="fancyButton2"
-                                        // onClick={() => setError('Minting Comming Soon')}
+                                            display:'flex',
+                                            flexDirection:'column',
+                                            // alignSelf:'flex-end',
+                                            // backgroundColor:'orange',
+                                            // flex:3
+                                            
+                                        }}
                                     >
-                                        {eventObj.quarter}
-                                    </button>
-                                    <button 
-                                        style={{
-                                            cursor:'pointer', 
-                                            zIndex:100,
-                                            height:50,
-                                            width:200,
-                                            fontSize:30,
-                                            fontFamily:'Bungee',
-                                            alignSelf:'center',
-                                            marginTop:10
-                                        }} 
-                                        className="fancyButton1"
-                                        // onClick={() => setError('Minting Comming Soon')}
-                                    >
-                                        {eventObj.percent}
-                                    </button>
+                                        <button 
+                                            style={{
+                                                cursor:'pointer', 
+                                                zIndex:100,
+                                                // height:50,
+                                                // width:200,
+                                                // fontSize:30,
+                                                fontFamily:'Bungee',
+                                                alignSelf:'center',
+                                                alignItems:'center',
+                                                justifyContent:'center',
+                                                display:'flex'
+                                            }} 
+                                            className="cardFlash"
+                                            // onClick={() => setError('Minting Comming Soon')}
+                                        >
+                                            {eventObj.quarter}
+                                        </button>
+                                        <button 
+                                            style={{
+                                                cursor:'pointer', 
+                                                zIndex:100,
+                                                // height:50,
+                                                // width:200,
+                                                // fontSize:30,
+                                                fontFamily:'Bungee',
+                                                alignSelf:'center',
+                                                marginTop:10,
+                                                alignItems:'center',
+                                                justifyContent:'center',
+                                                display:'flex'
+                                            }} 
+                                            className="cardFlash1"
+                                            // onClick={() => setError('Minting Comming Soon')}
+                                        >
+                                            {eventObj.percent}
+                                        </button>
+                                    </div>
+
+
 
                                 </div>
                             </div>
