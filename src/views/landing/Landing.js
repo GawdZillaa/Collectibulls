@@ -10,7 +10,6 @@ import Zoom from '@mui/material/Zoom';
 import Box from '@mui/material/Box';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Fab from '@mui/material/Fab';
-import { Chrono } from "react-chrono";
 import Slider from "react-slick";
 import { Snackbar } from '@mui/material';
 
@@ -519,62 +518,6 @@ const ScrollTop = ({children,dropNav }) => {
         );
   }
 
-  const TimeLine = () => {
-    const { innerWidth: width, innerHeight: height } = window;
-
-    const items = [
-        {
-        title: "Token Launch",
-        cardTitle: "Dunkirk",
-        cardSubtitle:"Men of the British Expeditionary Force (BEF) wade out to..",
-        cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-        //   media: {
-        //     type: "IMAGE",
-        //     source: {
-        //       url: "http://someurl/image.jpg"
-        //     }
-        //   }
-        },
-        {
-            title: "May 1940",
-            cardTitle: "Dunkirk",
-            cardSubtitle:"Men of the British Expeditionary Force (BEF) wade out to..",
-            cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-        },
-        {
-            title: "May 1940",
-            cardTitle: "Dunkirk",
-            cardSubtitle:"Men of the British Expeditionary Force (BEF) wade out to..",
-            cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-        },
-        {
-            title: "May 1940",
-            cardTitle: "Dunkirk",
-            cardSubtitle:"Men of the British Expeditionary Force (BEF) wade out to..",
-            cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-        }
-    ];
-
-    return (
-      <div style={{ width: '100%', height: 400}}>
-        <Chrono 
-            items={items} 
-            mode="HORIZONTAL" 
-            itemWidth={width*.25}
-            theme={{ 
-                primary: "black",
-                secondary: "white",
-                cardBgColor: "white",
-                cardForeColor: "violet",
-                titleColor: "black"
-            }}
-            disableNavOnKey={true}
-            enableOutline
-            cardHeight={100}
-        />
-      </div>
-    )
-  }
 
 const TimeLine2 = () => {
 
